@@ -1,0 +1,12 @@
+\subsubsection parameters ROS parameters
+
+Reads and maintains the following parameters on the ROS server
+
+- \b "~PID_P" : \b [int] Param P min: 0, default: 5000, max: 100000
+- \b "~PID_I" : \b [int] Param I min: 0, default: 7, max: 10000
+- \b "~PID_D" : \b [int] Param D min: -100000, default: -30, max: 100000
+- \b "~PID_C" : \b [int] Denominator min: 0, default: 1000, max: 100000
+- \b "~PID_W" : \b [int] D Window min: 0, default: 100, max: 200
+- \b "~PID_V" : \b [int] Param V min: -10000000, default: 0, max: 10000000
+- \b "~MAX_PWM" : \b [int] Max PWM min: 100, default: 0, max: 5000
+

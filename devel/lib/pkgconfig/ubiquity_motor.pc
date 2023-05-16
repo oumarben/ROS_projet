@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/catkin_ws/devel
+
+Name: ubiquity_motor
+Description: Description of ubiquity_motor
+Version: 0.14.1
+Cflags: -I/home/ubuntu/catkin_ws/devel/include -I/home/ubuntu/catkin_ws/src/ubiquity_motor/include
+Libs: -L${prefix}/lib 
+Requires: std_msgs message_runtime

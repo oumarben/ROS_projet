@@ -1,0 +1,13 @@
+\subsubsection usage Usage
+\verbatim
+<node name="motor_node" pkg="ubiquity_motor" type="motor_node">
+  <param name="PID_P" type="int" value="5000" />
+  <param name="PID_I" type="int" value="7" />
+  <param name="PID_D" type="int" value="-30" />
+  <param name="PID_C" type="int" value="1000" />
+  <param name="PID_W" type="int" value="100" />
+  <param name="PID_V" type="int" value="0" />
+  <param name="MAX_PWM" type="int" value="0" />
+</node>
+\endverbatim
+

@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/catkin_ws/devel
+
+Name: oled_display_node
+Description: Description of oled_display_node
+Version: 1.1.1
+Cflags: -I/home/ubuntu/catkin_ws/devel/include -I/home/ubuntu/catkin_ws/src/oled_display_node/include
+Libs: -L${prefix}/lib 
+Requires: roscpp rospy std_msgs message_runtime

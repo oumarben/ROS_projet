@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC  -Wall  -shared -Wl,-soname,libur_serial.so -o /home/ubuntu/catkin_ws/devel/lib/libur_serial.so CMakeFiles/ur_serial.dir/serial/src/serial.cc.o CMakeFiles/ur_serial.dir/serial/src/impl/unix.cc.o CMakeFiles/ur_serial.dir/serial/src/impl/list_ports/list_ports_linux.cc.o  -lrt -lpthread 

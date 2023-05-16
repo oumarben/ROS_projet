@@ -1,0 +1,2 @@
+ld08_driver:magni_robot/magni_bringup:magni_robot/magni_demos:magni_robot/magni_description:magni_robot/magni_desktop:magni_robot/magni_gazebo:magni_robot/magni_nav:magni_robot/magni_robot:magni_robot/magni_teleop:magni_robot/magni_viz:move_test:oled_display_node:ubiquity_motor
+-DCATKIN_DEVEL_PREFIX=/home/ubuntu/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ubuntu/catkin_ws/install -G Unix Makefiles
