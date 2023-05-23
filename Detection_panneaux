@@ -70,3 +70,5 @@ class DetectSign():
 
 					rospy.loginfo("Panneau détecté")
 					image_out_num = 2
+					rospy.sleep(0.5)
+					
