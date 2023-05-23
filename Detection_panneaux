@@ -5,10 +5,10 @@ import rospy
 import numpy as np
 import os
 import cv2
-from enum import Enum
+#from enum import Enum
 from std_msgs.msg import UInt8
-from sensor_msgs.msg import Image, CompressedImage
-from cv_bridge import CvBridge, CvBridgeError
+#from sensor_msgs.msg import Image, CompressedImage
+#from cv_bridge import CvBridge, CvBridgeError
 
 class DetectSign():
     def __init__(self):
@@ -63,10 +63,10 @@ class DetectSign():
 
 				mse = self.fnCalcMSE(src_pts, dst_pts)
 				if mse < MIN_MSE_DECISION:
-					msg_sign = UInt8()
-					msg_sign.data = self.TrafficSign.construction.value
+					#msg_sign = UInt8()
+					#msg_sign.data = self.TrafficSign.construction.value
 
-					self.pub_traffic_sign.publish(msg_sign)
+					#self.pub_traffic_sign.publish(msg_sign)
 
 					rospy.loginfo("Panneau détecté")
 					image_out_num = 2
