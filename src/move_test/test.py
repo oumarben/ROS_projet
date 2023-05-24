@@ -21,18 +21,10 @@ class YellowDetection:
 
     def delimite(self, img):
         m = np.copy(img)  # Copie de l'image d'origine
-
-        # Suppression de la partie supérieure de l'image
-        x = int(len(m) * 0.70)  # Calcul de la limite de suppression
-        for i in range(len(m)):
-            for j in range(len(m[0])):
-                if i < x:  # Si la position verticale est inférieure à la limite
-                    m[i][j] = [0, 0, 0]  # Remplacement du pixel par du noir
-
         # Définition des limites pour la découpe de l'image
         x_start = int(len(m[1]) * 0.25)  # Position de départ horizontale
         x_end = int(len(m[1]) * 0.75)  # Position de fin horizontale
-        y_start = int(len(m) * 0.15)  # Position de départ verticale
+        y_start = int(len(m) * 0.75)  # Position de départ verticale
         y_end = int(len(m))  # Position de fin verticale
 
         # Découpe de l'image en utilisant les limites définies
@@ -51,16 +43,25 @@ class YellowDetection:
         # Filtrer les pixels jaunes dans l'image HSV
         mask = cv2.inRange(hsv, lower_yellow, upper_yellow)
 
+        # Calculer le pourcentage de pixels jaunes dans l'image
+        total_pixels = mask.shape[0] * mask.shape[1]
+        yellow_pixels = np.sum(mask > 0)
+        yellow_percentage = (yellow_pixels / total_pixels) * 100
+
         # Compter le nombre de pixels jaunes à gauche et à droite de l'image
         height, width = mask.shape[:2]
         left_count = np.sum(mask[:, :width // 2] > 0)
         right_count = np.sum(mask[:, width // 2:] > 0)
-
+        rospy.loginfo(yellow_percentage)
         # Déterminer le côté majoritairement jaune
-        if left_count > right_count:
-            return -1
+        if yellow_percentage < 5:
+            return 0
+        elif yellow_percentage >= 10:
+            return 2
         elif right_count > left_count:
             return 1
+        elif right_count < left_count:
+            return -1
         else:
             return 0
 
@@ -90,22 +91,25 @@ class YellowDetection:
 
             # Publier l'image et le résultat de la détection
             self.image_pub.publish(image_msg)
-            rospy.loginfo(
-                "Côté majoritairement jaune : {}".format(yellow_side))
+            rospy.loginfo(yellow_side)
 
             # Déplacer le TurtleBot en fonction du résultat de la détection
-            if yellow_side == 1:
+            if (yellow_side == 1):
                 # Tourner à droite
-                self.cmd_vel.angular.z = -0.5
+                self.cmd_vel.angular.z = 0.3
                 self.cmd_vel.linear.x = 0.0
             elif yellow_side == -1:
                 # Tourner à gauche
-                self.cmd_vel.angular.z = 0.5
+                self.cmd_vel.angular.z = -0.3
+                self.cmd_vel.linear.x = 0.0
+            elif yellow_side == 2:
+                # Tourner à 180° à droite
+                self.cmd_vel.angular.z = -0.44
                 self.cmd_vel.linear.x = 0.0
             else:
                 # Circuler en ligne droite
                 self.cmd_vel.angular.z = 0.0
-                self.cmd_vel.linear.x = -0.5
+                self.cmd_vel.linear.x = 0.5
 
             # Publier la commande de déplacement
             self.cmd_vel_pub.publish(self.cmd_vel)
