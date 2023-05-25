@@ -104,7 +104,7 @@ class YellowDetection:
                 self.cmd_vel.linear.x = 0.0
             elif yellow_side == 2:
                 # Tourner à 180° à droite
-                self.cmd_vel.angular.z = -0.44
+                self.cmd_vel.angular.z = -0.43
                 self.cmd_vel.linear.x = 0.0
             else:
                 # Circuler en ligne droite
