@@ -1,3 +1,9 @@
 panneau-stop
 tout-droit
 virer-droit
+école
+passage-piéton
+parking-A
+parking-B
+klaxonner
+limite-vitesse-5
